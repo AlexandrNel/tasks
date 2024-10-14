@@ -1,57 +1,67 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <meta charset="UTF-8">
-  <title>CSS Стилизация</title>
-<style>
-    .block {
-        width: 100px;                   /* ширина блока */
-        height: 100px;                  /* высота блока */
-        background-color: lightblue;  /* цвет фона */
-        margin: 10px;                   /* внешние отступы */
-        display: inline-block;          /* элементы с таким свойством будут вести себя, как строчные */
-        transition: all 0.3s;           /* задает плавность анимации */
-    }
+    <meta charset="UTF-8">
+    <title>Слайдер изображений</title>
+    <style>
+        img {
+            transition: opacity 0.5s;
+            opacity: 1;
+        }
 
-    /** 
-    * TODO Для каждого блока добавьте уникальные стили. Например:
-    ** width:
-    ** height: 
-    ** background-color:
-    ** border-radius:                               /* делает углы скругленными 
-    ** border: 1px solid black                      /* добавляет рамку
-    ** box-shadow: 5px 5px 15px rgba(0,0,0,0.3);    /* добавляет тень
-    ** opacity: 0.8;                                /* изменяет прозрачность
+        img.fade-out {
+            opacity: 0;
+        }
 
-    **  background-image: url('https://via.placeholder.com/100'); /* добавляет изображение фона
-        background-size: cover;
+        body {
+            text-align: center;
+            padding-top: 50px;
+        }
 
+        img {
+            width: 300px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
 
-    * TODO Попробуйте добавить анимацию при неведении.
-    :hover - псевдокласс, который оживляет элементы, реагирует на наведение курсора.
-    После любого селектора ставим двоеточие и пишем ключевое слово hover
-    */
-
-    #block1:hover {
-        /* стили */
-    }
-
-    #block1 {
-        /* стили */
-    }
-
-    #block2 {
-        /* стили */
-    }
-
-    #block3 {
-       /* стили */
-    }
-</style>
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="block" id="block1">Блок 1</div>
-  <div class="block" id="block2">Блок 2</div>
-  <div class="block" id="block3">Блок 3</div>
+    <button id="prev">Назад</button>
+    <img id="image" src="./images/300.png" alt="Слайд 1">
+    <button id="next">Вперед</button>
+
+    <script>
+        const images = ['./images/300.png', './images/300.png', '/images/300.png'];
+        let currentIndex = 0;
+        
+        function changeImage() {
+            const img = document.getElementById('image');
+            img.classList.add('fade-out');
+            setTimeout(function () {
+                img.src = images[currentIndex];
+                img.classList.remove('fade-out');
+            }, 500);
+        }
+
+        document.getElementById('next').addEventListener('click', function () {
+            currentIndex = (currentIndex + 1) % images.length;
+            changeImage();
+        });
+
+        document.getElementById('prev').addEventListener('click', function () {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            changeImage();
+        });
+    </script>
 </body>
+
 </html>
