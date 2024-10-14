@@ -1,14 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Кнопка Сюрприз</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    img {
+      max-width: 300px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
-
 <body>
+  <button>Нажми меня</button>
+  <div id="result"></div>
+  <script>
+    document.querySelector('button').addEventListener('click', function() {
+      // Добавьте текст или картинку
+    });
 
+    /**
+     * TODO Внутри обработчика события добавьте текст:
+     ** document.getElementById('result').innerHTML = 'Сюрприз! 🎉';
+     * 
+     * TODO Вместо текста можно добавить изображение:
+     ** document.getElementById('result').innerHTML = '<img src="./images/01.gif" alt="Сюрприз">'
+        можно добавить изображение как из локальной папки ./images, так и ссылкой из интернета
+
+     * TODO Замените URL на любую другую картинку по вашему выбору.
+     * */
+  </script>
 </body>
-
 </html>
