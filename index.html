@@ -3,51 +3,48 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Лайк счетчик</title>
+    <title>Таймер обратного отсчета</title>
     <style>
         body {
             text-align: center;
-            padding-top: 50px;
+            padding-top: 100px;
             font-family: Arial, sans-serif;
         }
 
-        #like-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+        #timer {
+            font-size: 48px;
+            margin-bottom: 20px;
         }
 
-        #like-button.liked {
-            background-color: pink;
-        }
-
-        #counter {
+        #message {
             font-size: 24px;
-            margin-top: 20px;
+            color: green;
         }
-        #like-button {
-  transition: transform 0.2s;
-}
-#like-button:active {
-  transform: scale(1.2);
-}
     </style>
 </head>
 
 <body>
-    <button id="like-button">👍 Лайк</button>
-    <p>Количество лайков: <span id="counter">0</span></p>
+    <div id="timer">00:10</div>
+    <div id="message"></div>
+    <button id="reset">Сбросить таймер</button>
     <script>
-        let count = 0;
-        const likeButton = document.getElementById('like-button');
-        const counter = document.getElementById('counter');
+        let timeLeft = 10;
+        const timerDiv = document.getElementById('timer');
+        const messageDiv = document.getElementById('message');
 
-        likeButton.addEventListener('click', function () {
-            count++;
-            counter.textContent = count;
-            likeButton.classList.toggle('liked');
-        });
-
+        const countdown = setInterval(function () {
+            timeLeft--;
+            if(timeLeft>10){
+                timerDiv.textContent = `00:${timeLeft}`;
+            } else {
+                timerDiv.textContent = `00:0${timeLeft}`;
+            }
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                messageDiv.textContent = 'Время вышло!';
+            }
+        }, 1000);
+        
     </script>
 </body>
 
