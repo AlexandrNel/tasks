@@ -1,14 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Изменение фона</title>
+    <style>
+        body {
+            text-align: center;  /* делает текст по центру */
+            padding-top: 50px;   /* задает внутренний отступ сверху */
+            transition: background-color 0.5s; /* задает плавность анимации */
+        }
+
+        button {
+            padding: 10px 20px; /* внутренние отступы сверху и снизу */
+            font-size: 16px; /* размер текста */
+        }
+    </style>
+    <script>
+          function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
 </head>
-
 <body>
+    <button>Изменить фон</button>
+    <script>
+        document.querySelector('button').addEventListener('click', function () {
+            
+            /* Код для изменения фона */
+        });
 
+        /** 
+         * TODO Внутри функции обработчика события click добавьте строку, которая изменяет цвет фона. Например: 
+         ** document.body.style.backgroundColor = 'lightgreen';
+
+         * TODO Попробуйте заменить 'lightgreen' на другие цвета, например, 'skyblue', 'coral', '#FF5733'. 
+
+         * TODO Используйте функцию для случайного цвета: 
+         ** getRandomColor()
+
+         * */
+
+    </script>
 </body>
 
 </html>
