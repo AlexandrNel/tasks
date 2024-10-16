@@ -48,12 +48,19 @@
          */
 
         document.querySelectorAll('.color-block').forEach(block => {
-            block.addEventListener('mouseover', function () {
-                 
-        });
-        });
+                block.addEventListener('mouseover', function () {
+                 // Недостающий код 
+                });
 
-        // Сброс цвета при двойном клике:
+
+                // Сброс цвета при двойном клике:
+                block.addEventListener('dblclick', function () {
+                    block.style.background = 'lightblue' 
+                });
+            });
+
+        
+
         
     </script>
 </body>
