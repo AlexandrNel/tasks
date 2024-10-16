@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Считалка кликов</title>
-  <style>
+  <style>  
     body {
-      text-align: center;
-      padding-top: 50px;
+        text-align: center;
+        padding-top: 50px;
     }
-    button {
+    
+    button { /* Стили кнопки*/
       padding: 10px 20px;
       font-size: 16px;
     }
@@ -27,21 +28,50 @@
 
   <script>
     let count = 0;
-    document.getElementById('reset').addEventListener('click', function () {
+    document.getElementById('reset')?.addEventListener('click', function () {
         count = 0;
         document.getElementById('counter').textContent = count;
     });
+
     document.querySelector('button').addEventListener('click', function() {
-      count = count + 1
-      document.getElementById('counter').textContent = count
       // Добавьте обновление текста с числом кликов
     });
 
     /** 
-     * TODO Внутри обработчика события click добавьте:
-     * document.getElementById('counter').textContent = count
-     * TODO Добавление кнопки сброса:
+     * TODO 1 Внутри обработчика события click добавьте:
+        count = count + 1;
+        document.getElementById('counter').textContent = count;
+     * 
+     * TODO 2 Добавление кнопки сброса:
      * Добавьте кнопку в тэг body <button id="reset">Сбросить</button>
+     * 
+     * TODO 3 Стилизация кнопки. Стилизуйте кнопку по-своему. Список стилей:
+     ** background-color - цвет фона (red/yellow/#fff/rgb(0,0,0))
+                background-color: red;
+
+     ** color - цвет текста (black/white/#fff)
+                color: red;
+
+     ** width - ширина (px/%)
+                width: 100px;
+
+     ** height - высота (px/%)
+                height: 100px
+
+     ** border - рамка 
+                border: 1px solid black;
+
+     ** border-radius - скругление углов (px/%). Если сделать 50%, получится круг
+                border-radius: 20px;
+
+     ** transition - меняет состояние элемента плавно, а не резко. 
+                transition: all 0.3s;
+
+     ** transform - перемещает, трансформирует элемент. 
+                transform: translateX(10px); - перемещяет элемент на 10 пикселей вправо.
+                transform: translateY(10px); - перемещяет элемент на 10 пикселей вниз.
+                transform: scale(0.5); - делает элемент меньше в 2 раза.
+
       */
   </script>
 </body>
