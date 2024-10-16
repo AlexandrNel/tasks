@@ -24,27 +24,60 @@
 </head>
 
 <body>
-    <div id="timer">00:10</div>
+    <div id="timer"></div>
     <div id="message"></div>
     <button id="reset">Сбросить таймер</button>
     <script>
-        let timeLeft = 10;
-        const timerDiv = document.getElementById('timer');
-        const messageDiv = document.getElementById('message');
-
-        const countdown = setInterval(function () {
-            timeLeft--;
-            if(timeLeft>10){
-                timerDiv.textContent = `00:${timeLeft}`;
-            } else {
-                timerDiv.textContent = `00:0${timeLeft}`;
+        function convertTime(seconds = 0){
+            let time = seconds
+            let maxSeconds = 3600
+            if(seconds > maxSeconds){
+                time = maxSeconds
             }
+            if(seconds < 0){
+                return `00:00`
+            }
+            let m = Math.floor(time / 60) 
+            let s = Math.floor(time % 60) 
+
+            if(m < 10 && s < 10 ){
+                return `0${m}:0${s}`
+            }
+            if(m < 10 && s >= 10){
+                return `0${m}:${s}`
+            }
+            if(s < 10 && m > 10){
+                return `${m}:0${s}`
+            }
+            return `${m}:${s}`
+        }
+        function resetTimer(){
+            if(!countdown){
+                runTimer()
+            }
+            timeLeft = timeSetted
+            timerDiv.textContent = convertTime(timeSetted) 
+        }
+        function runTimer(){
+            countdown = setInterval(function () {
+            timeLeft--;
+            timerDiv.textContent = convertTime(timeLeft)
             if (timeLeft <= 0) {
                 clearInterval(countdown);
+                countdown = 0
                 messageDiv.textContent = 'Время вышло!';
             }
         }, 1000);
-        
+        }
+        let timeSetted = 10 // Заданное время в секундах
+        let timeLeft = timeSetted; 
+        let countdown
+        const timerDiv = document.getElementById('timer');
+        const btn = document.getElementById('reset')
+        const messageDiv = document.getElementById('message');
+        btn.addEventListener('click', resetTimer)
+        runTimer()
+        timerDiv.textContent = convertTime(timeLeft)
     </script>
 </body>
 
