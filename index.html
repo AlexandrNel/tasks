@@ -14,6 +14,16 @@
         button {
             padding: 10px 20px; /* внутренние отступы сверху и снизу */
             font-size: 16px; /* размер текста */
+            background-color: white; /* фон кнопки */
+            outline: none; 
+            border: 1px solid rgb(163, 163, 163); /* рамки элемента */
+            cursor: pointer; /* появляет курсор при наведении */
+            box-shadow: 3px 3px 0 1px black; /* тень кнопки */
+            transition: all .2s ease-in-out; 
+        }
+        button:active{
+            transform: translateY(3px) translateX(3px); /* рсмещение по оси X и Y */
+            box-shadow: none; /* обнуление тени */
         }
     </style>
     <script>
